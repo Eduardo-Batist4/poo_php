@@ -1,15 +1,14 @@
 <?php
 
-class Item extends Product {
-    public string $name;
-    public string $category;
-    public string $color;
+require_once "Product.php";
 
-    public function __construct(string $name, string $category, string $color, $price, $quantity) {
-        parent::__construct($price, $quantity);
-        $this->name = $name;
-        $this->category = $category;
-        $this->color = $color;
+class Item extends Product {
+    public Product $product;
+    public int $quantity;
+
+    public function __construct(Product $product, int $quantity) {
+        $this->product = $product;
+        $this->quantity = $quantity;
     }
 
 }

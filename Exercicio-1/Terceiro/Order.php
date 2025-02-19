@@ -3,17 +3,30 @@
 require_once "Item.php";
 
 class Order {
-    public array $itens = [];
+    public Item $item;
+    public int $quantity;
+    public array $items = [];
+    public int $total;
 
-    public function addItem (Product $product, int $quantity) {
-        if($product->reduceStock($quantity)) {
-            $this->itens[] = new Item($product, $quantity);
-        } else {
-            echo "Estoque insuficiente para o produto {$product->name} \n";
-        }
+    public function addItem (Item $item, int $quantity) {
+        $this->items[] =  $item ;
     }
 
-    public function getOrders () {
-        print_r($this->itens);
+    public function getAllItems () {
+        echo "------------------------\n";
+        echo "Pedidos\n";
+        echo "------------------------\n";
+        foreach ($this->items as $item) {
+            echo "Nome: {$item->product->name}   Preço: R$:{$item->product->price}   Category: {$item->category}   Quantity: {$item->quantity}\n";
+        };
+        echo "------------------------\n";
+        echo "Total: R$:{$this->calculateTotal()} \n";
+    }
+
+    private function calculateTotal () {
+        foreach ($this->items as $item) {
+            $total = $item->calculateSubTotal();
+        };
+        return $total;
     }
 }

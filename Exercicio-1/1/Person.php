@@ -30,7 +30,7 @@ class Person {
     public function nameInfo () {
         echo "Nome: {$this->name}. \n";
     }
-
+ 
     public function setDateOfBirth (int $day, int $month, int $year) {
         $this->dayOfBirth = $day;
         $this->monthOfBirth = $month;

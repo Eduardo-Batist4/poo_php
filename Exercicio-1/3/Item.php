@@ -15,10 +15,9 @@ class Item extends Product {
         $this->quantity = $quantity;
     }
 
-    protected function calculateSubTotal () {
+    public function calculateSubTotal () {
         return $this->quantity * $this->product->price;
     }
-
 
 }
 

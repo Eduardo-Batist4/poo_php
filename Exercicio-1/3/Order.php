@@ -9,7 +9,8 @@ class Order {
     public int $total;
 
     public function addItem (Item $item, int $quantity) {
-        $this->items[] =  $item ;
+        $item->product->reduceStock($quantity);
+        $this->items[] =  $item;
     }
 
     public function getAllItems () {
@@ -23,7 +24,7 @@ class Order {
         echo "Total: R$:{$this->calculateTotal()} \n";
     }
 
-    private function calculateTotal () {
+    public function calculateTotal () {
         foreach ($this->items as $item) {
             $total = $item->calculateSubTotal();
         };

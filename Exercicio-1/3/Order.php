@@ -8,8 +8,8 @@ class Order {
     public array $items = [];
     public int $total;
 
-    public function addItem (Item $item, int $quantity) {
-        $item->product->reduceStock($quantity);
+    public function addItem (Item $item) {
+        $item->product->reduceStock($item->quantity);
         $this->items[] =  $item;
     }
 
@@ -25,9 +25,10 @@ class Order {
     }
 
     public function calculateTotal () {
+        $this->total = 0;
         foreach ($this->items as $item) {
-            $total = $item->calculateSubTotal();
+            $this->total += $item->calculateSubTotal();
         };
-        return $total;
+        return $this->total;
     }
 }

@@ -9,7 +9,7 @@ class Triangle extends Obj {
     }
 
     public function calculateArea () {
-        $triangle = $this->width * $this->height / 2;
+        $triangle = $this->getWidth() * $this->getHeight() / 2;
         echo "A area do triangulo é: {$triangle} \n";
     }
 }

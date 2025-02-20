@@ -9,7 +9,7 @@ class Rectangle extends Obj {
     }
 
     public function isSquare () {
-        if ($this->width == $this->height) {
+        if ($this->getWidth() == $this->getHeight()) {
             echo "É um quadrado! \n";
         } else {
             echo "Não é um quadrado! \n";
@@ -17,7 +17,7 @@ class Rectangle extends Obj {
     }
 
     public function calculateArea () {
-        $rectangle = $this->width * $this->height;
-        echo "A area do triangulo é: {$rectangle} \n";
+        $rectangle = $this->getWidth() * $this->getHeight();
+        echo "A area do Retangulo é: {$rectangle} \n";
     }
 }

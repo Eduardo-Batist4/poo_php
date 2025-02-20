@@ -1,16 +1,20 @@
 <?php 
 
 class Obj {
-    public int $width;
-    public int $height;
+    private int $width;
+    private int $height;
 
     public function __construct(int $width, int $height) {
         $this->width = $width;
         $this->height = $height;
     }
 
-    public function calculateArea () {
-        echo "oi";
+    public function getWidth () {
+        return $this->width;
+    }
+
+    public function getHeight () {
+        return $this->height;
     }
 }
 

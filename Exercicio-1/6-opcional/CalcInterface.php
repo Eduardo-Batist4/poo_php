@@ -1,10 +1,11 @@
 <?php
 
+require_once "CalcMemory.php";
 
 class CalcInterface {
     private int $num1;   
     private int $num2;   
-    private string $operator;   
+    private string $operator; 
 
 
     public function interface () {
@@ -25,7 +26,7 @@ class CalcInterface {
         $this->operator = $operator;
     }
 
-    public function getNumAndOpe() {
+    public function getNumAndOpe () {
         echo $this->num1 . "\n";
         echo $this->num2 . "\n";
         echo $this->operator . "\n";

@@ -1,35 +1,44 @@
-<?php
+<?php 
 
-require_once "CalcMemory.php";
+    require_once "CalcMemory.php";
+    require_once "CalcController.php";
 
-class CalcInterface {
-    private int $num1;   
-    private int $num2;   
-    private string $operator; 
+    class CalcInterface{
+        public $controle;
 
+        public function __construct () {
+            $this->controle = new CalcController();
+        }
 
-    public function interface () {
-        echo "------------------------------\n";
-        echo "Calculadora \n";
-        echo "------------------------------\n";
+        public function coletarNumero () {
+            $numero = readline("Digite um número: ");
+            return $numero;
+        }
 
-        $num1 = readline("Digite o primeiro numero: \n");
-        $num2 = readline("Digite o segundo numero: \n");
-        $operator = readline("Digite o operador: \n");
+        public function coletarOperador () {
+            echo "Selecione o operador: \n[1]+\n[2]-\n[3]*\n[4]/\n";
+            $operador = readline("Selecione: ");
+            while(true){
+                if($operador > 4 || $operador < 1){
+                    $operador = readline("Valor inválido. Selecione: ");
+                } else{
+                    break;
+                };
+            };
 
-        $this->setNumAndOpe($num1, $num2, $operator);
-    }
+            switch($operador):
+                case 1:
+                    return "+";
+                case 2:
+                    return "-";
+                case 3:
+                    return "*";
+                case 4:
+                    return "/";
+                endswitch;
+        }
 
-    public function setNumAndOpe ($number1, $number2, $operator) {
-        $this->num1 = $number1;
-        $this->num2 = $number2;
-        $this->operator = $operator;
-    }
-
-    public function getNumAndOpe () {
-        echo $this->num1 . "\n";
-        echo $this->num2 . "\n";
-        echo $this->operator . "\n";
-    }
-
-}
+        public function imprimirResultado($a, $b, $operador){
+            echo "O resultado de $a $operador $b = ". $this->controle->opera($a, $b, $operador). "\n";
+        }
+    };

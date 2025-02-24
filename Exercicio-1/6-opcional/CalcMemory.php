@@ -1,23 +1,42 @@
-<?php
+<?php 
 
-require_once "CalcInterface.php";
+    class CalcMemoria{
+        private $numeroUm;
+        private $numeroDois;
+        private $operador;
 
-class CalcMemory {
-    public CalcInterface  $interface;
-    private int $number1;
-    private int $number2;
-    private string $operator;
+        public function __construct($numeroUm, $numeroDois, $operador)
+        {
+            $this->numeroUm = $numeroUm;
+            $this->numeroDois = $numeroDois;
+            $this->operador = $operador;
+        }
 
-    public function saveInfo ($num1, $num2, $ope) {
-        $this->number1 = $num1;
-        $this->number2 = $num2;
-        $this->operator = $ope;
+        public function setNumeroUm($numeroUm){
+            $this->numeroUm = $numeroUm;
+        }
+
+        public function getNumeroUm(){
+            return $this->numeroUm;
+        }
+
+        public function setNumeroDois($numeroDois){
+            $this->numeroDois = $numeroDois;
+        }
+
+        public function getNumeroDois(){
+            return $this->numeroDois;
+        }
+
+        public function setOperador($operador){
+            $this->operador = $operador;
+        }
+
+        public function getOperador(){
+            return $this->operador;
+        }
+
+
+
+
     }
-    
-    public function getNumAndOpe () {
-        echo $this->number1 . "\n";
-        echo $this->number2 . "\n";
-        echo $this->operator . "\n";
-    }
-
-}
